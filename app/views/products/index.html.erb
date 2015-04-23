@@ -1,14 +1,29 @@
-<h2>Products</h2>
-
 <% @products.each do |category, products| %>
-  <h3><%= category.name %></h3>
-  <ul>
+  <div class="cards">
     <% products.each do |product| %>
-    <li>
-      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
-      <p><%= product.short_description %></p>
-      <p><b>Price:</b> <%= number_to_currency product.price %></p>
-    </li>
+      
+        <div class="card">
+          <div class="card-image">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
+          </div>
+          <div class="card-header">
+           
+            <div class="card-name"><%= product.name %></div> 
+             <div class="card-price"><%= number_to_currency product.price %></div>
+          </div>
+          <div class="card-copy">
+            <p><%= product.short_description[0...60] %></p>
+          </div>
+          <div>
+            <%= link_to 'Ver', product_path(product.permalink) %>
+          </div>
+        </div>
+      
     <% end %>
-  </ul>
+    </div>
 <% end %>
+
+
+
+
+

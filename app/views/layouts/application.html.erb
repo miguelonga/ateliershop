@@ -7,17 +7,102 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if current_order %>
-		<p style="border:1px solid black;padding:10px;">
-		  You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
-		  <%= number_to_currency current_order.total_before_tax %>.
-		  <%= link_to "View basket", basket_path %>
-		  <%= link_to "Checkout", checkout_path %>
-		  <%= flash[:notice] %>
-		</p>
-	<% end %>
 
-<%= yield %>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="javascript:void(0)">Products</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+        <li class="nav-link more"><a href="javascript:void(0)">More</a>
+          <ul class="submenu">
+            <li><a href="javascript:void(0)">Submenu Item</a></li>
+            <li><a href="javascript:void(0)">Another Item</a></li>
+            <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                <li><a href="javascript:void(0)">Another Item</a></li>
+              </ul>
+            </li>
+            <li class="more"><a href="javascript:void(0)">Another submenu</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                <li><a href="javascript:void(0)">An Item</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+        <form role="search">
+          <input type="search" placeholder="Enter Search" />
+          <button type="submit">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
+          </button>
+        </form>
+      </div>
+      <a href="javascript:void(0)" class="sign-up">Comprar</a>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+	<% if current_order %>
+		<div class="sidebar">
+			<div class="basket">
+				<p>
+				  You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+				  <%= number_to_currency current_order.total_before_tax %>.
+				  
+				  <%= flash[:notice] %>
+				</p>
+				<p class="buttons">
+<a href="/basket">View my bag</a>
+<a class="checkout" href="/checkout">Checkout</a>
+</p>
+
+			</div>
+			<ul class="reasons">
+				<li class="support">
+					<h4>Quality assurance</h4>
+<p>We check all the produts we ship so you can rely on us.</p>
+</li>
+						
+				</li>
+				<li class="quality">
+					<h4>Quality assurance</h4>
+<p>We check all the produts we ship so you can rely on us.</p>
+</li>
+					
+				</li>
+				
+				<li class="delivery">
+<h4>Quality assurance</h4>
+<p>We check all the produts we ship so you can rely on us.</p>
+</li>
+
+			</ul>
+		</div>
+	<% end %>
+<div class="no-sidebar">
+	
+<%= yield %>	
+
+</div>
+
 
 </body>
 </html>

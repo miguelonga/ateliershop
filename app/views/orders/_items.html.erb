@@ -1,5 +1,4 @@
-<table width='100%' border='1'>
-  <thead>
+<table class='tables' width='90%' border='1'>
     <tr>
       <td>Quantity</td>
       <td>Product</td>
@@ -7,8 +6,8 @@
       <td>Tax</td>
       <td>Total</td>
     </tr>
-  </thead>
-  <tbody>
+  
+
     <% order.order_items.each do |item| %>
     <tr>
       <td><%= item.quantity %></td>
@@ -29,8 +28,8 @@
     </tr>
     <% end %>
 
-  </tbody>
-  <tfoot>
+  
+  
     <tr>
       <td colspan='4'>Sub-Total</td>
       <td><%= number_to_currency order.total_before_tax %></td>
@@ -43,5 +42,5 @@
       <td colspan='4'>Total</td>
       <td><%= number_to_currency order.total %></td>
     </tr>
-  </tfoot>
+
 </table>

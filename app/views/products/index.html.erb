@@ -1,27 +1,54 @@
+<ul class="accordion-tabs-minimal">
+  
 <% @products.each do |category, products| %>
-  <div class="cards">
-    <% products.each do |product| %>
-      
-        <div class="card">
-          <div class="card-image">
-            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png" alt="">
-          </div>
-          <div class="card-header">
-           
-            <div class="card-name"><%= product.name %></div> 
-             <div class="card-price"><%= number_to_currency product.price %></div>
-          </div>
-          <div class="card-copy">
-            <p><%= product.short_description[0...60] %></p>
-          </div>
-          <div>
-            <%= link_to 'Ver', product_path(product.permalink) %>
-          </div>
-        </div>
-      
-    <% end %>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link"><%= category.name %></a>
+    <div class="tab-content">
+
+      <% products.each do |product| %>
+
+
+      <div class="hover-tile-outer" style="">
+
+
+       
+
+
+
+
+      <div class="hover-tile-container">
+        <div class="hover-tile hover-tile-visible"></div>
+        <div class="hover-tile hover-tile-hidden">
+
+
+
+
+
+
+      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
+      <p><%= product.short_description %></p>
+      <p><b>Price:</b> <%= number_to_currency product.price %></p>
+    
     </div>
+  </div>
+  </div>
+
+
+    <% end %>
+      
+    </div>
+  </li>
+  
+
+
+  
+
+    
+
 <% end %>
+
+
+</ul>
 
 
 

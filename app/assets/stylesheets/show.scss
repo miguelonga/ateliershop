@@ -1,0 +1,11 @@
+.description{
+	@include outer-container;
+}
+
+.img{
+	@include span-columns(6);
+}
+
+.inf{
+	@include span-columns(6);
+}

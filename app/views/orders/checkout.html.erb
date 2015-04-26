@@ -4,6 +4,100 @@
 <%= render 'items', :order => @order %>
 
 
+<%= form_for @order, :url => checkout_path, :html => {:class => 'checkout disableable'} do |f| %>
+  <%= f.error_messages %>
+  <div class="customer">
+    <%= field_set_tag do %>
+      <dl>
+        <dt>
+          <%= f.label :first_name, "Name", :class => 'req' %>
+        </dt>
+        <dd class="name">
+          <%= f.text_field :first_name, :placeholder => 'First Name' %>
+          <%= f.text_field :last_name, :placeholder => 'Last Name' %>
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <%= f.label :company, "Company Name (optional)" %>
+        </dt>
+        <dd>
+          <%= f.text_field :company %>
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <%= f.label :email_address, 'Your E-Mail Address', :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :email_address %>
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <%= f.label :phone_number, 'Your Contact Phone Number', :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :phone_number %>
+        </dd>
+      </dl>
+    <% end %>
+    <%= field_set_tag do %>
+      <dl>
+        <dt>
+          <%= f.label :billing_address1, "Billing Address", :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :billing_address1, :placeholder => "Line 1" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address3, :placeholder => "Town/City" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address4, :placeholder => "County" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_postcode, :placeholder => "Postcode", :class => 'postcode' %>
+        </dd>
+        <dd>
+          <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name %>
+        </dd>
+        <dd>
+          <%= f.check_box :separate_delivery_address %>
+          <%= f.label :separate_delivery_address, "Deliver to a different address?" %>
+        </dd>
+      </dl>
+      <dl class="delivery">
+        <dt>
+          <%= f.label :delivery_address1, "Delivery Address", :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :delivery_name, :placeholder => "Deliver to (name/company)" %>
+        </dd>
+        <dd>
+          <%= f.text_field :delivery_address1, :placeholder => "Line 1" %>
+        </dd>
+        <dd>
+          <%= f.text_field :delivery_address3, :placeholder => "Town/City" %>
+        </dd>
+        <dd>
+          <%= f.text_field :delivery_address4, :placeholder => "County" %>
+        </dd>
+        <dd>
+          <%= f.text_field :delivery_postcode, :placeholder => "Postcode", :class => 'postcode' %>
+        </dd>
+        <dd>
+          <%= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name %>
+        </dd>
+      </dl>
+    <% end %>
+  </div>
+  <p class="submit">
+    <%= f.submit "Continue to payment" %>
+  </p>
+<% end %>
+
+
 
 <div class="modal">
   <label for="modal-1">
@@ -14,24 +108,24 @@
     <div class="modal-inner">
       <div class="modal-close" for="modal-1"></div>
         <%= form_for @order, :url => checkout_path do |f| %>
-          <dl>
-            <dt><%= f.label :first_name, 'Name' %></dt>
-            <dd><%= f.text_field :first_name %> <%= f.text_field :last_name %></dd>
+          
+            <%= f.label :first_name, 'Name' %>
+            <%= f.text_field :first_name %> <%= f.text_field :last_name %>
 
-            <dt><%= f.label :billing_address1, 'Address' %></dt>
-            <dd><%= f.text_field :billing_address1 %></dd>
-            <dd><%= f.text_field :billing_address2 %></dd>
-            <dd><%= f.text_field :billing_address3 %></dd>
-            <dd><%= f.text_field :billing_address4 %></dd>
-            <dt><%= f.label :billing_postcode, 'Post code' %></dt>
-            <dd><%= f.text_field :billing_postcode %></dd>
-            <dd><%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %></dd>
+            <%= f.label :billing_address1, 'Address' %>
+            <%= f.text_field :billing_address1 %>
+            <%= f.text_field :billing_address2 %>
+            <%= f.text_field :billing_address3 %>
+            <%= f.text_field :billing_address4 %>
+            <%= f.label :billing_postcode, 'Post code' %>
+            <%= f.text_field :billing_postcode %>
+            <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %>
 
-            <dt><%= f.label :email_address %></dt>
-            <dd><%= f.text_field :email_address %></dd>
+            <%= f.label :email_address %>
+            <%= f.text_field :email_address %>
 
-            <dt><%= f.label :phone_number %></dt>
-            <dd><%= f.text_field :phone_number %></dd>
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number %>
 
             <button><%= f.submit 'Continue' %></button>
 

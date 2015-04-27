@@ -7,11 +7,14 @@
 	<div class="inf">
 		<h2><%= @product.name %></h2>
 		<p><%= @product.short_description %></p>
-		<p>
+		<div class="priceandbut">
 		  <b><%= number_to_currency @product.price %></b>
-		  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
-		</p>
 
+		  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
+
+		  <%= select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !@product.in_stock? %>
+		
+		</div>	
 		<hr>
 		<%= simple_format @product.description %>
 		<hr>

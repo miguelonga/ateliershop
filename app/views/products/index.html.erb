@@ -1,4 +1,6 @@
 <ul class="accordion-tabs-minimal">
+
+
   
 <% @products.each do |category, products| %>
   <li class="tab-header-and-content">
@@ -7,10 +9,17 @@
 
       <% products.each do |product| %>
 
+      
+<% if product.default_image %>
 
-      <div class="hover-tile-outer" style="">
+     <div class="hover-tile-outer" style="background:url(<%= product.default_image.path %>);background-size: 100%;">
 
+    <% else %>
 
+    <div class="hover-tile-outer">
+            
+
+    <% end %>
        
 
 
@@ -26,8 +35,9 @@
 
 
       <h4><%= link_to product.name, product_path(product.permalink) %></h4>
-      <p><%= product.short_description %></p>
+      
       <p><b>Price:</b> <%= number_to_currency product.price %></p>
+      <p></p>
     
     </div>
   </div>

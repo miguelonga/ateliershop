@@ -1,6 +1,95 @@
 $mobile: new-breakpoint(max-width 640px);
 $tablet: new-breakpoint(max-width 965px);
 
+.cards {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.card {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $base-link-color: $action-color !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $card-border-color: $base-border-color;
+  $card-border: 1px solid $card-border-color;
+  $card-background: lighten($card-border-color, 10%);
+  $card-header-background: $card-background;
+  $card-hover-background: lighten($card-background, 5%);
+  $card-image-background: #DBD199;
+  $card-image-hover-background: lighten($card-image-background, 5%);
+  $card-margin: 1em;
+
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  @include transition (all 0.2s ease-in-out);
+  background-color: $card-background;
+  border-radius: $base-border-radius;
+  border: $card-border;
+  box-shadow: 0 2px 4px darken($base-background-color, 10%);
+  cursor: pointer;
+  margin: 0 $card-margin $base-spacing $card-margin;
+  position: relative;
+
+  .card-image {
+    overflow: hidden;
+    max-height: 150px;
+
+    img {
+      @include transition (all 0.2s ease-in-out);
+      background: $card-image-background;
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      width: 100%;
+    }
+  }
+
+  .card-header {
+    @include transition (all 0.2s ease-in-out);
+    background-color: $card-header-background;
+    border-bottom: $card-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+  }
+
+  .card-copy {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+  }
+  
+  &:focus,
+  &:hover {
+    background-color: $card-hover-background;
+    
+    .card-image img {
+      background: $card-image-hover-background;
+    }
+  
+    .card-header {
+      background-color: $card-hover-background;
+    }
+  }
+
+  &:active {
+    background-color: $card-background;
+
+    .card-header {
+      background-color: $card-background;
+    }
+  }
+}
 
 
 .accordion-tabs-minimal {
@@ -77,41 +166,6 @@ $tablet: new-breakpoint(max-width 965px);
 
 
 
-.tile-outer-img{
-  $base-border-color: gainsboro !default;
-  $base-line-height: 1.5em !default;
-  $medium-screen: em(640) !default;
-  $hover-tile-height: 20em;
-  $base-spacing: 1.5em;
-
-  background: "<%= @product.default_image.path %>";
-  background-position: top;
-  background-size: cover;
-  background-color: transparent;
-  border: 1px solid $base-border-color;
-  cursor: pointer;
-  img {
-    width: 100%;
-  }
-  height: $hover-tile-height;
-  margin-bottom: $base-line-height;
-  margin-right: 10px;
-  
-
-
-  @include media($tablet) {
-      @include span-columns(12);
-      @include omega();
-      margin-right: 0px;
-
-    }
-
-
- 
-}
-
-
-
 .hover-tile-outer {
   $base-border-color: gainsboro !default;
   $base-line-height: 1.5em !default;
@@ -119,11 +173,10 @@ $tablet: new-breakpoint(max-width 965px);
   $hover-tile-height: 20em;
   $base-spacing: 1.5em;
 
-  background: url("");
   background-position: top;
   background-size: cover;
   background-color: transparent;
-  border: 1px solid $base-border-color;
+ 
   cursor: pointer;
   height: $hover-tile-height;
   margin-bottom: $base-line-height;
@@ -167,10 +220,14 @@ $tablet: new-breakpoint(max-width 965px);
     p {
       color: transparentize(#fff, 0.3);
       line-height: $base-line-height;
+      text-align: center;
+      list-style: none;
     }
 
     h4 {
       margin: 0 0 0.5em 0;
+      font-size: 2em;
+      text-align: center;
     }
   }
 }

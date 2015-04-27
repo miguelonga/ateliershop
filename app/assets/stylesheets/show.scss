@@ -6,6 +6,48 @@
 	@include span-columns(6);
 }
 
+.priceandbut{
+	@include span-columns(12);
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .inf{
 	@include span-columns(6);
+	a {
+	  float:right;
+      background:#256D73;
+      border:0;
+      font-family:Lato, Arial, sans-serif;
+      height:24px;
+      padding:4px 12px;
+      color:#fff;
+      border-radius:4px;
+      font-weight:bold;
+      font-size:0.9em;
+      margin-left:4px;
+      text-decoration: none;
+	}
+	h2 {
+	  font-size: 3em;
+	  margin-bottom: 20px;
+	  color: #9BA09D;
+	}
+
+	select {
+		float:right;
+      background:#256D73;
+      border:0;
+      font-family:Lato, Arial, sans-serif;
+      height:24px;
+      padding:4px 12px;
+      color:#fff;
+      border-radius:4px;
+      font-weight:bold;
+      font-size:0.9em;
+      margin-left:4px;
+      text-decoration: none;
+	}
 }
+
+

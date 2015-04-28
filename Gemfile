@@ -31,6 +31,8 @@ gem 'neat'
 
 gem 'refills'
 
+gem "shoppe-stripe", require: "shoppe/stripe"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

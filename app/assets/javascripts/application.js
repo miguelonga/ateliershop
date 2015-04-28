@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require shoppe/stripe/form_handler
 
 $(function() {
   $("#modal-1").on("change", function() {

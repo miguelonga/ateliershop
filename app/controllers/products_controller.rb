@@ -13,4 +13,8 @@ class ProductsController < ApplicationController
 	  current_order.order_items.add_item(@product, 1)
 	  redirect_to product_path(@product.permalink), :notice => "Product has been added successfuly!"
 	end
+
+  def filter
+    @products = Shoppe::Product.active.with_attributes(params[:key].to_s, params[:value].to_s)
+  end
 end

@@ -187,7 +187,20 @@ $tablet: new-breakpoint(max-width 965px);
   }
 
   @include media($tablet) {
+     
+      
+      height: 15em;
+      
+      
+
+    }
+   @include media($mobile) {
+
+      
       @include span-columns(12);
+     
+      
+      height: 15em;
       
       
 
@@ -228,6 +241,310 @@ $tablet: new-breakpoint(max-width 965px);
       margin: 0 0 0.5em 0;
       font-size: 2em;
       text-align: center;
+    }
+  }
+}
+
+.hero {  
+  $base-border-radius: 3px !default;
+  $action-color: #477DCA !default;
+  $large-screen: em(860) !default;
+  $hero-background-top: #7F99BE; 
+  $hero-background-bottom: #E7F1EC;
+  $hero-color: rgba(51, 51, 51, 0.701961);
+  $gradient-angle: 10deg;
+  $hero-image: '';
+
+  @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
+  background-color: #324766;
+  background-position: top;
+  background-image: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 3em;
+  width: 100%;
+  position: relative;
+  margin-bottom: 4em;
+
+  .hero-logo img {
+    height: 18em;
+    margin-bottom: 1em;
+    @include media($tablet) {
+      height: 10em;
+      
+      
+
+    }
+  }
+
+
+  .hero-inner {
+    @include outer-container;
+    @include clearfix;
+    color: $hero-color;
+    margin: auto;
+    padding: 3.5em;
+    text-align: center;
+
+    .hero-copy {
+      text-align: center;
+      
+      h1 {
+        font-size: 1.6em;
+        margin-bottom: 0.5em;
+
+        @include media($large-screen) {
+          font-size: 1.8em;
+        }
+      }
+
+      p {
+        font-weight: 200;
+        line-height: 1.4em;
+        margin: 0 auto 3em auto; 
+
+        @include media($large-screen) {
+          font-size: 1.1em;
+          max-width: 40%;
+        }
+      }
+    }
+
+    button {
+      @include button(flat, $action-color);
+      padding: 0.7em 1em;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+// All the fontz
+@import url(//fonts.googleapis.com/css?family=Arvo:300,400,700,400italic);
+
+// Color Theory
+$yellow: #e8c63d;
+$darkyellow: #d4aa02;
+$grey: #ddd;
+$coal: #333;
+$white: #fff;
+
+// Global Things
+*,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}
+body {
+  background-color: white; // Old browsers
+  
+  color: rgb(95, 99, 102);
+  font-family: "Lato", Sans-Serif;
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+  .active.nav{
+
+  }
+}
+a{
+  color: $darkyellow;
+  text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: underline;
+  }
+}
+
+// Container Things
+.active-nav{
+  @include background-image(linear-gradient(to right bottom , #A4B9CE 0%, #9DC2C0 45%, #B8D5D3 60%, #BBD7D6 75%, #C6E2E0 100%));
+}
+
+.active-nav .page-wrap{
+  position: relative;
+  @include transition( transform 0.3s ease-out);
+  @include transform( scale(.6) translateX(200px) );
+  z-index: 1000;
+
+  .active-click{
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+  }
+}
+.page-wrap{
+  @include backface-visibility( hidden ); // stops flash from css transitions - only seen on iOS Chrome (so far)
+  background: $white;
+  
+  height: 100%;
+  position: relative;
+  @include transition( transform 0.3s ease-out );
+  width: 100%;
+  z-index: 200; // must be higher than "under-nav"
+}
+.active-click{
+  display: none;
+}
+.crop{
+  overflow: hidden; //cuts the page at window size
+}
+.main{
+    
+}
+
+// So a mobile nav is in a bar...
+.mobile-top-bar{
+  background: rgba(198, 226, 225, 0.46);
+  height: 42px;
+  margin-top: 0px;
+  padding: 8px;
+  position: relative;
+  z-index: 100;
+}
+.toggleMenu{
+  background: $coal;
+  color: $white;
+  cursor: pointer;
+  display: block;
+  height: 28px;
+  padding: 7px 8px;
+  width: 28px;
+}
+
+// Mobile-Nav ------------
+.mobile-nav{
+  position: absolute;
+  top: 75px;
+  left: 30px;
+  li{
+    height: 75px; // Adjust this if you add more nav items and for landscape responsive
+    list-style: none;
+    width: 100%;
+  }
+  .active a{
+    color: white;
+  }
+  a{
+    color: $white;
+    font-weight: 300;
+    opacity: 0;
+    padding-left: 200px;
+    text-decoration: none;
+    @include transition(all .2s ease-out);
+    @include transition-delay(0s);
+    &:hover, &:focus{
+      color: $darkyellow;
+      @include transition(all .5s ease-out);
+    }
+  }
+}
+.active-nav .mobile-nav li.show-nav a{
+  opacity: 1;
+  padding-left: 0px;
+  @include transition(all .2s ease-out);
+}
+
+
+.breadcrumb {   
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $base-link-color: $action-color !default;
+  $medium-gray: #999 !default;
+  $light-gray: #DDD !default;
+  $medium-screen: em(640) !default;
+  $breadcrumb-border-color: $base-border-color;
+  $breadcrumb-border: 1px solid $breadcrumb-border-color;
+  $breadcrumb-height: $base-spacing * 1.5;
+  $breadcrumb-arrow-color: $breadcrumb-border-color;
+  $breadcrumb-background: $base-background-color;
+  $breadcrumb-inactive-hover-color: $breadcrumb-background;
+  $breadcrumb-color: $medium-gray;
+  $breadcrumb-color-hover: $action-color;
+  $breadcrumb-color-active: $breadcrumb-color;
+  @include span-columns(6 of 12);
+  width: 100%;
+
+
+  display: inline-block;
+  margin-bottom: $base-spacing;
+  text-align: center;
+
+  a {
+    background-color: $breadcrumb-background;
+    border-left: 0;
+    border: $breadcrumb-border;
+    color: $breadcrumb-color;
+    display: inline-block;
+    font-size: 0.8em;
+    line-height: $breadcrumb-height;
+    margin-bottom: 2px;
+    margin-right: -5px;
+    padding: 0 ($breadcrumb-height / 4) 0 ($breadcrumb-height / 2);
+    position: relative;
+    text-decoration: none;
+
+    &:first-child {
+      border-bottom-left-radius: $base-border-radius;
+      border-left: $breadcrumb-border;
+      border-top-left-radius: $base-border-radius;
+      padding-left: $breadcrumb-height / 2;
+    }
+
+    &:last-child {
+      background-color: $breadcrumb-background;
+      border-bottom-right-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      color: $breadcrumb-color-active;
+      padding-right: $breadcrumb-height / 2;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: $breadcrumb-inactive-hover-color;
+      color: $breadcrumb-color-hover;
+    }
+
+    &:after,
+    &:before {
+      @include position(absolute, 0px auto 0px 100%);
+      border-bottom: $breadcrumb-height / 2 solid transparent;
+      border-left: $breadcrumb-height / 4 solid transparent;
+      border-top: $breadcrumb-height / 2 solid transparent;
+      content: '';
+      display: block;
+      margin: auto;
+      z-index: 2;
+    }
+
+    &:last-child:after,
+    &:last-child:before {
+       border: none;
+    }
+
+    &:before {
+      border-left-color: $breadcrumb-arrow-color;
+      margin-left: 1px;
+      z-index: 1;
+    }
+    &:after {
+      border-left-color: $breadcrumb-background;
+    }
+
+    @include media($medium-screen) {
+      font-size: 1em;
+      padding: 0 ($breadcrumb-height / 2) 0 ($breadcrumb-height / 1.5);
     }
   }
 }

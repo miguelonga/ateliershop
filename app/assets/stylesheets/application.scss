@@ -128,6 +128,10 @@ a { color:inherit;}
   padding-left: 0px;
   padding-right: 0px;
   }
+  h1 {
+    font-size: 4em;
+    margin-bottom: 1em;
+  }
 
 }
 
@@ -207,5 +211,44 @@ div.customer {
           }
         }
       }
+
+.pay fieldset{
+        border:1px solid #ccc;
+        font-size:0.9em;
+        h3 { font-size:0.9em; color:#333; background:#FFFEED; padding:15px; border-bottom:1px solid #ecebd3; margin-bottom:0;}
+        p.error { background:image-url('error.svg') #fff5f5 no-repeat 15px 15px; background-size:16px; border-bottom:1px solid #EFCECE; padding:15px 40px;color:#dd2828; margin:0;}
+        dl {
+          margin:30px 0;
+          dt { width:30%; text-align:right; float:left; padding-top:8px; font-weight:bold;}
+          dd {
+            margin-left:35%;
+            margin-bottom:25px;
+            input { width:300px; font-family:$font; padding:5px;font-size:1.3em; border:1px solid #ccc; background:#f8f8f8; border-radius:4px;}
+            input:focus { border-color:#777; background:#fff;}
+            &.cvc input { width:70px;}
+            &.number input { background-repeat:no-repeat; background-position: 95% 10px; background-size:30px;}
+            span { color:#999; font-size:0.9em; margin-left:15px;}
+            select {
+              -webkit-appearance: none;
+              background:image-url('down-arrow-black.svg') #efefef no-repeat 39px 15px;
+              width:60px;
+              font-size:1.3em;
+              background-size:11px;
+              border:0;
+              padding:6px 10px;
+              font-family:$font;
+              margin-right:6px;
+              border:1px solid #ccc;
+              color:#333;
+              &:focus { border:1px solid #777; background-color:#fff;}
+              &.year { width:85px; background-position:60px 15px;}
+            }
+          }
+        }
+      
+
+
+
+}
 
 

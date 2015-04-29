@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
+  delete 'basket/:order_item_id' => 'orders#change_item_quantity'
+  delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
+  get 'products/filter' => 'products#filter', :as => 'product_filter'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

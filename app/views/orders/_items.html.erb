@@ -15,7 +15,10 @@
       <td><%= item.ordered_item.full_name %></td>
       <td><%= number_to_currency item.sub_total %></td>
       <td><%= number_to_currency item.tax_amount %></td>
-      <td><%= number_to_currency item.total %></td>
+      <td><%= number_to_currency item.total %><%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => 'delete ajax' %>
+<%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax' %>
+  <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax' %>
+</td>
     </tr>
     <% end %>
 

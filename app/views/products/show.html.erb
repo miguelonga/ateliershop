@@ -19,6 +19,21 @@
 		<%= simple_format @product.description %>
 		<hr>
 
+		<% if @product.attributes  %>
+  <table class="tables">
+    <% @product.product_attributes.each do |attribute| %>
+      <tr>
+        <td>
+          <%= attribute.key %>
+        </td>
+        <td>
+          <%= link_to attribute.value, product_filter_path(:key => attribute.key, :value => attribute.value) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
 		<p><%= link_to "Back to list", root_path %></p>
 	</div>
 

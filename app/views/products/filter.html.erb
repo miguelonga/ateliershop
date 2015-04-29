@@ -1,28 +1,17 @@
-   <% content_for :hero do %>
-    <div class="hero">
-  <div class="hero-inner">
-    <a href="" class="hero-logo"><img src="http://www.atelierdelaflor.com/s/misc/logo.png?t=1429981871" alt="Logo Image"></a>
-    <div class="hero-copy">
-      <h1>la floristería online</h1>
-      
-    </div>
-    </div>
-    
-  </div>
-  <% end %>
-
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
 
-<ul class="accordion-tabs-minimal">
 
-
+<div class="breadcrumb">
+  <a href="javascript:void(0)">Products</a>
+  <a href="javascript:void(0)">Category</a>
+  <a href="javascript:void(0)"><%= "#{params[:key]}" %></a>
+  <a href="javascript:void(0)"><%= "#{params[:value]}" %></a>
+  <a href="javascript:void(0)">Five</a>
+</div>
   
-<% @products.each do |category, products| %>
-  <li class="tab-header-and-content">
-    <a href="#" class="tab-link"><%= category.name %></a>
-    <div class="tab-content">
 
-      <% products.each do |product| %>
+
+      <% @products.each do |product| %>
 
       
 <% if product.default_image %>
@@ -61,21 +50,3 @@
 
     <% end %>
       
-    </div>
-  </li>
-  
-
-
-  
-
-    
-
-<% end %>
-
-
-</ul>
-
-
-
-
-

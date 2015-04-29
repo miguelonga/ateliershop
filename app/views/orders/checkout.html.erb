@@ -1,6 +1,5 @@
-<div class="wrapper">
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <h1>Checkout</h1>
-</div>
 <%= render 'items', :order => @order %>
 
 
@@ -99,41 +98,6 @@
 
 
 
-<div class="modal">
-  <label for="modal-1">
-    <div class="modal-trigger">Click for Modal</div>
-  </label>
-  <input class="modal-state" id="modal-1" type="checkbox" />
-  <div class="modal-fade-screen">
-    <div class="modal-inner">
-      <div class="modal-close" for="modal-1"></div>
-        <%= form_for @order, :url => checkout_path do |f| %>
-          
-            <%= f.label :first_name, 'Name' %>
-            <%= f.text_field :first_name %> <%= f.text_field :last_name %>
-
-            <%= f.label :billing_address1, 'Address' %>
-            <%= f.text_field :billing_address1 %>
-            <%= f.text_field :billing_address2 %>
-            <%= f.text_field :billing_address3 %>
-            <%= f.text_field :billing_address4 %>
-            <%= f.label :billing_postcode, 'Post code' %>
-            <%= f.text_field :billing_postcode %>
-            <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %>
-
-            <%= f.label :email_address %>
-            <%= f.text_field :email_address %>
-
-            <%= f.label :phone_number %>
-            <%= f.text_field :phone_number %>
-
-            <button><%= f.submit 'Continue' %></button>
-
-          </dl>
-        <% end %>
-    </div>
-  </div>
-</div>
 
 
 

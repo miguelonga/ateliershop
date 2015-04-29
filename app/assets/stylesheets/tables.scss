@@ -11,9 +11,13 @@
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
+  margin-bottom: 20px;
   
   width: 100%;
-
+  a {
+    background: transparent;
+    color: grey;
+  }
   th {
     text-align: left;
   }

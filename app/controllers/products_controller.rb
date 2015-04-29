@@ -17,4 +17,6 @@ class ProductsController < ApplicationController
   def filter
     @products = Shoppe::Product.active.with_attributes(params[:key].to_s, params[:value].to_s)
   end
+
+    
 end

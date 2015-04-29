@@ -16,39 +16,48 @@
 //= require_tree .
 //= require shoppe/stripe/form_handler
 
-$(function() {
-  $("#modal-1").on("change", function() {
-    if ($(this).is(":checked")) {
-      $("body").addClass("modal-open");
-    } else {
-      $("body").removeClass("modal-open");
-    }
-  });
-
-  $(".modal-fade-screen, .modal-close").on("click", function() {
-    $(".modal-state:checked").prop("checked", false).change();
-  });
-
-  $(".modal-inner").on("click", function(e) {
-    e.stopPropagation();
-  });
-});
 
 
-$(document).ready(function() {
-  var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
-  $('#js-centered-navigation-menu').removeClass("show");
-  
-  menuToggle.on('click', function(e) {
-    e.preventDefault();
-    $('#js-centered-navigation-menu').slideToggle(function(){
-      if($('#js-centered-navigation-menu').is(':hidden')) {
-        $('#js-centered-navigation-menu').removeAttr('style');
-      }
+
+
+
+
+(function($) {
+  jQuery(document).ready(function() {
+
+    // Mobile Menu - Open Sesame -------------
+    $('.toggleMenu').click(function() {
+     
+      var windowHeight = $(window).height();
+      
+      $('.page-wrap').height(windowHeight); // sets height to cut page to visible window size
+      $('body').addClass('active-nav');
+      $('.page-wrap').addClass('crop'); // "proper" crop
+      
+      // Show me the links
+      var timer = 0;
+      $.each($('.mobile-nav li'), function (i, s) {
+        timer = 40 * i;
+        setTimeout(function () {
+          $(s).addClass('show-nav');
+        }, timer); // show menu items on timer
+      });
+      
+    });
+
+    // Mobile Menu - Lock It Up ----------------
+    $('.active-click').click(function() {
+      $('body').removeClass('active-nav');
+      $('.mobile-nav li').removeClass('show-nav');
+      
+          setTimeout(function(){
+        $('.page-wrap').removeClass('crop'); // release the "proper" crop
+        $('.page-wrap').height('auto'); // resets height for scolling
+      }, 300);
     });
   });
-});
 
+}(jQuery));
 
 $(document).ready(function () {
   $('.accordion-tabs-minimal').each(function(index) {

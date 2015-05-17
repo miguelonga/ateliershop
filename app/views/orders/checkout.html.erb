@@ -2,6 +2,8 @@
 <h1>Checkout</h1>
 <%= render 'items', :order => @order %>
 
+<h1 style='margin-bottom:10px;'>¿Quien lo envía?</h1>
+
 
 <%= form_for @order, :url => checkout_path, :html => {:class => 'checkout disableable'} do |f| %>
   <%= f.error_messages %>
@@ -9,27 +11,18 @@
     <%= field_set_tag do %>
       <dl>
         <dt>
-          <%= f.label :first_name, "Name", :class => 'req' %>
+          <%= f.label :name, "Nombre y apellidos" %>
         </dt>
         <dd class="name">
-          <%= f.text_field :first_name, :placeholder => 'First Name' %>
-          <%= f.text_field :last_name, :placeholder => 'Last Name' %>
+          <%= f.text_field :first_name, :placeholder => 'Nombre' %>
+          <%= f.text_field :last_name, :placeholder => 'Apellidos' %>
         </dd>
       </dl>
-      <dl>
         <dt>
-          <%= f.label :company, "Company Name (optional)" %>
+          <%= f.label :email_address, 'Direccion de E-Mail', :class => 'req' %>
         </dt>
         <dd>
-          <%= f.text_field :company %>
-        </dd>
-      </dl>
-      <dl>
-        <dt>
-          <%= f.label :email_address, 'Your E-Mail Address', :class => 'req' %>
-        </dt>
-        <dd>
-          <%= f.text_field :email_address %>
+          <%= f.text_field :email_address, :placeholder => 'alguien@ejemplo.com' %>
         </dd>
       </dl>
       <dl>
@@ -37,26 +30,26 @@
           <%= f.label :phone_number, 'Your Contact Phone Number', :class => 'req' %>
         </dt>
         <dd>
-          <%= f.text_field :phone_number %>
+          <%= f.text_field :phone_number, :placeholder => '676665544' %>
         </dd>
       </dl>
     <% end %>
     <%= field_set_tag do %>
       <dl>
         <dt>
-          <%= f.label :billing_address1, "Billing Address", :class => 'req' %>
+          <%= f.label :billing_address1, "Direccion de la factura", :class => 'req' %>
         </dt>
         <dd>
-          <%= f.text_field :billing_address1, :placeholder => "Line 1" %>
+          <%= f.text_field :billing_address1, :placeholder => "calle, numero y puerta" %>
         </dd>
         <dd>
-          <%= f.text_field :billing_address3, :placeholder => "Town/City" %>
+          <%= f.text_field :billing_address3, :placeholder => "ciudad" %>
         </dd>
         <dd>
-          <%= f.text_field :billing_address4, :placeholder => "County" %>
+          <%= f.text_field :billing_address4, :placeholder => "Provincia" %>
         </dd>
         <dd>
-          <%= f.text_field :billing_postcode, :placeholder => "Postcode", :class => 'postcode' %>
+          <%= f.text_field :billing_postcode, :placeholder => "46001", :class => 'postcode' %>
         </dd>
         <dd>
           <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name %>
@@ -90,11 +83,73 @@
         </dd>
       </dl>
     <% end %>
+
   </div>
+
+  <h1>¿A quién se lo envías?</h1>
+  <div class="customer">
+
+  <dl>
+    <dd class='notes'>
+      <%= f.label :notes, "Mensaje que quieres que le demos" %>
+      <%= f.text_area :notes, :placeholder => 'message', :height => 300  %>
+    </dd>
+  </dl>
+  <%= field_set_tag do %>
+      <dl>
+        <dt>
+          <%= f.label :name, "Nombre y apellidos" %>
+        </dt>
+        <dd class="name">
+          <%= f.text_field :first_name, :placeholder => 'Nombre' %>
+          <%= f.text_field :last_name, :placeholder => 'Apellidos' %>
+        </dd>
+      </dl>
+        <dt>
+          <%= f.label :email_address, 'Direccion de E-Mail', :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :email_address, :placeholder => 'alguien@ejemplo.com' %>
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <%= f.label :phone_number, 'Your Contact Phone Number', :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :phone_number, :placeholder => '676665544' %>
+        </dd>
+      </dl>
+    <% end %>
+    <%= field_set_tag do %>
+      <dl>
+        <dt>
+          <%= f.label :billing_address1, "Lugar de la entrega", :class => 'req' %>
+        </dt>
+        <dd>
+          <%= f.text_field :billing_address1, :placeholder => "calle, numero y puerta" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address3, :placeholder => "ciudad" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address4, :placeholder => "Provincia" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_postcode, :placeholder => "46001", :class => 'postcode' %>
+        </dd>
+       
+        
+      </dl>
+      <% end %>
+
+     
+
   <p class="submit">
     <%= f.submit "Continue to payment" %>
   </p>
 <% end %>
+</div>
 
 
 

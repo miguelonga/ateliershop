@@ -139,6 +139,31 @@ div.customer {
         margin-top: 20px;
         font-size:0.8em;
         overflow:hidden;
+        dd {
+            margin:10px 0;
+            textarea { font-size:1.3em; font-family:$font; padding:5px;font-size:1.2em; width:96%; border:1px solid #ccc; background:#f8f8f8; border-radius:4px;}
+            input[type=text_area]:focus { border-color:#777; background:#fff;}
+            input[type=checkbox] { float:left; margin-right:8px;margin-top:2px;}
+            &.notes textarea {
+              width: 100%;
+              height: 100px;
+            }
+            input.postcode { width:30%;}
+            select {
+              -webkit-appearance: none;
+              background:image-url('down-arrow-black.svg') #f8f8f8 no-repeat 97% 12px;
+              width:100%;
+              font-size:1.2em;
+              background-size:11px;
+              border:0;
+              padding:5px;
+              font-family:$font;
+              margin-right:6px;
+              border:1px solid #ccc;
+              color:#333;
+              &:focus { border:1px solid #777; background-color:#fff;}
+            }
+          }
         fieldset {
           width:50%;
           float:left;
@@ -153,6 +178,10 @@ div.customer {
             input[type=checkbox] { float:left; margin-right:8px;margin-top:2px;}
             &.name input { width:45%;}
             &.name input:first-child { margin-right:7px;}
+            &.notes input {
+              width: 100%;
+              height: 300px;
+            }
             input.postcode { width:30%;}
             select {
               -webkit-appearance: none;

@@ -12,8 +12,18 @@
   <nav class="mobile-nav">
     <ul>
       <li>
+        <a href="/products/filter?key=Celebración&value=Cumpleaños">
+          ¿Què puedo regalar?
+        </a>
+      </li>
+      <li>
+        <a href="/products/filter?key=Precio&value=más+de+50">
+          ¿Cuánto quiero gastarme?
+        </a>
+      </li>
+      <li>
         <a href="/">
-          Productos
+          Ver todos los trabajos
         </a>
       </li>
       <li>
@@ -44,13 +54,16 @@
 
     </div>
   </div>
+
+  
   
   <div class="main">
+
     <%= yield :hero %>
   </div>
   
 
-      <div class="wrapper">
+      <div class="wrapper no-sidebar">
   
 <%= yield %>  
 </div>
@@ -65,7 +78,22 @@
 
 
 
+<script>
+  function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var div_top = $('#sticky-anchor').offset().top;
+    if (window_top > div_top) {
+        $('#sticky').addClass('stick');
+    } else {
+        $('#sticky').removeClass('stick');
+    }
+}
 
+$(function () {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+});
+</script>
 
 
 

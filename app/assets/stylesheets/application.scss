@@ -22,7 +22,7 @@ a { color:inherit;}
 
 
 .sidebar {
-
+    @include span-columns(4);
     @include media($mobile) {
       height: 0px;
 
@@ -36,7 +36,7 @@ a { color:inherit;}
     }
     float:right;
     width:20%;
-    margin-right: 5%;
+    margin-right: 3%;
     div.basket {
       background:image-url('bag.svg') #DFF0F1 no-repeat 18px 18px;
       background-size:14px;
@@ -71,7 +71,7 @@ a { color:inherit;}
       padding:15px;
       border-radius:8px;
       font-size:0.9em;
-      display: none;
+      
       li {
         padding-left:35px;
         margin-bottom:25px;
@@ -104,7 +104,7 @@ a { color:inherit;}
 }
 
 .no-sidebar{
-  @include span-columns(12);
+  
     
 }
 
